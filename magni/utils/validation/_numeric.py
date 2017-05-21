@@ -14,7 +14,7 @@ validate_numeric(name, type, range_='[-inf;inf]', shape=(), precision=None,
 
 """
 
-from __future__ import division
+
 from numbers import Number as _Number
 
 import numpy as np
@@ -25,7 +25,7 @@ from magni.utils.validation._util import report as _report
 
 
 try:
-    long = long
+    long = int
 except NameError:
     long = int
 
@@ -34,7 +34,7 @@ _types = {
         None: (bool, np.bool_),
         8: np.bool8 if 'bool8' in dir(np) else np.bool_},
     'integer': {
-        None: (int, np.signedinteger, long),
+        None: (int, np.signedinteger, int),
         8: getattr(np, 'int8', np.int_),
         16: getattr(np, 'int16', np.int_),
         32: getattr(np, 'int32', np.int_),
@@ -52,8 +52,8 @@ _types = {
         128: getattr(np, 'complex256', np.complex_)}}
 
 _precisions = set(precision
-                  for type_ in _types.values()
-                  for precision in type_.keys())
+                  for type_ in list(_types.values())
+                  for precision in list(type_.keys()))
 
 
 def validate_numeric(name, type_, range_='[-inf;inf]', shape=(),
@@ -298,8 +298,8 @@ def _check_shape(name, dshape, shape):
                     prepend='The value(s) of ')
 
         for i, value in enumerate(shape):
-            if not isinstance(value, (int, long)):
-                _report(TypeError, 'must be {!r}.', (int, long),
+            if not isinstance(value, int):
+                _report(TypeError, 'must be {!r}.', (int, int),
                         var_name=('shape', i), var_value=value,
                         expr='type({})', prepend='Invalid validation call: ')
 
@@ -326,8 +326,8 @@ def _check_type(name, dtype, types_):
     valid = False
 
     for type_ in types_:
-        if type_ not in _types.keys():
-            _report(ValueError, 'must be in {!r}.', _types.keys(),
+        if type_ not in list(_types.keys()):
+            _report(ValueError, 'must be in {!r}.', list(_types.keys()),
                     var_name='type_', var_value=type_,
                     prepend='Invalid validation call: ')
 

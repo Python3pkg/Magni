@@ -16,7 +16,7 @@ attach_data(obj, data)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 
@@ -164,7 +164,7 @@ def _handle_format_inconsistency(obj, data):
 
     """
 
-    if 'thumbnail' in obj['attrs'].keys():
+    if 'thumbnail' in list(obj['attrs'].keys()):
         if not isinstance(obj['attrs']['thumbnail'], str):
             msg = "The 'thumbnail' file header must have type {!r}."
             raise IOError(msg.format(str))

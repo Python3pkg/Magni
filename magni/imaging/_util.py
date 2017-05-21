@@ -8,7 +8,7 @@ Module providing the public functions of the magni.imaging subpackage.
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 
@@ -241,7 +241,7 @@ def get_inscribed_masks(img, as_vec=False):
     else:
         r = img.shape[0] / 2
 
-    x, y = np.meshgrid(*map(np.arange, (r, r)))
+    x, y = np.meshgrid(*list(map(np.arange, (r, r))))
 
     circle_mask = double_mirror(x**2 + y**2 <= r**2)
     square_mask = double_mirror(np.maximum(x, y) <= r / np.sqrt(2))

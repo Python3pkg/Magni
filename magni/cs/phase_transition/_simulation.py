@@ -23,7 +23,7 @@ the last backup point when run again.
 
 """
 
-from __future__ import division
+
 import os
 import random
 import sys
@@ -39,9 +39,9 @@ from magni.utils.multiprocessing import process as _process
 from magni.utils import split_path as _split_path
 
 if sys.version_info[0] == 2:
-    iter_range = xrange(2**30)
+    iter_range = range(2**30)
 else:
-    iter_range = range(2**32)
+    iter_range = list(range(2**32))
 
 
 def run(algorithm, path, label, pre_simulation_hook=None):

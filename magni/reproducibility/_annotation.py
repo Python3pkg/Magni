@@ -29,7 +29,7 @@ The returned annotations are any nested level of dicts of dicts of strings.
 
 """
 
-from __future__ import division
+
 import contextlib
 import datetime
 import hashlib
@@ -395,7 +395,7 @@ def get_magni_config():
         for importer, modname, ispkg in packages:
             if modname[-8:] == '._config':
                 try:
-                    settings = dict(eval('_' + modname).configger.items())
+                    settings = dict(list(eval('_' + modname).configger.items()))
                 except AttributeError:
                     # Skip base Configgers, e.g. cs.reconcstruction.config
                     pass

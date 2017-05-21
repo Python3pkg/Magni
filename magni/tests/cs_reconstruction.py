@@ -89,7 +89,7 @@ use_rademacher(n, m, k, seed)
 
 """
 
-from __future__ import division
+
 import os
 import unittest
 import warnings

@@ -15,7 +15,7 @@ get_transform_names()
 
 """
 
-from __future__ import division
+
 import types
 
 from magni.imaging.dictionaries import _matrices
@@ -126,7 +126,7 @@ def get_transform_names():
 
     """
 
-    name_candidates = _matrices.__dict__.keys()
+    name_candidates = list(_matrices.__dict__.keys())
     names = [candidate[4:] for candidate in name_candidates
              if candidate[:4] == 'get_']
 

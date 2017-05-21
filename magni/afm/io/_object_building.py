@@ -16,7 +16,7 @@ build_object(params)
 
 """
 
-from __future__ import division
+
 from collections import OrderedDict as _OrderedDict
 
 from magni.afm.types.spectroscopy import Chunk as _Chunk
@@ -63,7 +63,7 @@ def build_object(params):
     attrs = dict(groups[0])
 
     for name in ('xPixels', 'yPixels'):
-        if name not in attrs.keys():
+        if name not in list(attrs.keys()):
             raise IOError('The file must have a {!r} header parameter.'
                           .format(name))
 
@@ -120,7 +120,7 @@ def _build_buffer(file_type, index, params):
                        'chunk': {'types': _Chunk.params, 'min_len': 7}}
 
         # grid xDirection and yDirection are stored as integers
-        multiparams['grid']['types'] = _OrderedDict(_Grid.params.items())
+        multiparams['grid']['types'] = _OrderedDict(list(_Grid.params.items()))
         multiparams['grid']['types']['xDirection'] = int
         multiparams['grid']['types']['yDirection'] = int
 
@@ -128,7 +128,7 @@ def _build_buffer(file_type, index, params):
         data = []
 
         for name, value in params:
-            if name in multiparams.keys():
+            if name in list(multiparams.keys()):
                 if name not in allowed_params:
                     raise IOError('Buffer #{!r} may not contain {!r} headers.'
                                   .format(index, name))
@@ -142,7 +142,7 @@ def _build_buffer(file_type, index, params):
                            '{!r} values.')
                     raise IOError(msg.format(name, len(types)))
 
-                for value, param, type_ in zip(value, *zip(*types.items())):
+                for value, param, type_ in zip(value, *list(zip(*list(types.items())))):
                     if not isinstance(value, type_):
                         msg = ('The values of each {!r} buffer header must '
                                'have types {!r}.')
@@ -339,7 +339,7 @@ def _handle_format_inconsistency(obj):
 
     if obj['attrs']['fileType'].lower() == 'image':
         for buffer_ in obj['buffers']:
-            if ('trace' in buffer_['attrs'].keys() and
+            if ('trace' in list(buffer_['attrs'].keys()) and
                     isinstance(buffer_['attrs']['trace'], str)):
                 if buffer_['attrs']['trace'].lower() == 'trace':
                     buffer_['attrs']['trace'] = True

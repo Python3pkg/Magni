@@ -13,7 +13,7 @@ load_phase_transition(path, label='default')
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

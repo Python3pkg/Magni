@@ -60,7 +60,7 @@ Or generate an AWGN noise vector based on a 40 dB SNR
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

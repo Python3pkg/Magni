@@ -8,13 +8,13 @@ Module for wrapping style checks of the Magni source code.
 
 """
 
-from __future__ import division
+
 import contextlib
 import os
 import re
 import unittest
 try:
-    from StringIO import StringIO  # Python 2 byte str (Python 2 only)
+    from io import StringIO  # Python 2 byte str (Python 2 only)
 except ImportError:
     from io import StringIO  # Python 3 unicode str (both Py2 and Py3)
 
@@ -129,7 +129,7 @@ class TestStyleConformance(unittest.TestCase):
         cc_harvester = radon.cli.CCHarvester([self.magni_base_path], config)
 
         cc_problems = dict()
-        for key, val in cc_harvester._to_dicts().items():
+        for key, val in list(cc_harvester._to_dicts().items()):
             for k, element in enumerate(val):
                 if element['complexity'] >= cc_threshold:
                     cc_problems['{} -- {}'.format(key, k)] = element

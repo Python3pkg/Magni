@@ -16,7 +16,7 @@ rho_se(delta, zeta, resolution=1000)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

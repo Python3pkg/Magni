@@ -19,7 +19,7 @@ idft2(x, mn_tuple, overcomplete_mn_tuple=None)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 import scipy.fftpack

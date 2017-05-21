@@ -8,7 +8,7 @@ Module providing the common functionality of the subpackage.
 
 """
 
-from __future__ import division
+
 from collections import OrderedDict as _OrderedDict
 
 from magni.utils.types import ClassProperty as _classproperty
@@ -73,14 +73,14 @@ class BaseClass(object):
             _generic('attrs', 'mapping')
             params = self.params
 
-            for name in attrs.keys():
-                if name in params.keys():
+            for name in list(attrs.keys()):
+                if name in list(params.keys()):
                     _generic(('attrs', name), params[name])
 
         validate_input()
 
-        names = self.params.keys()
-        attrs = {name: value for name, value in attrs.items() if name in names}
+        names = list(self.params.keys())
+        attrs = {name: value for name, value in list(attrs.items()) if name in names}
         self._attrs = _ReadOnlyDict(attrs)
 
     attrs = property(lambda self: self._attrs)
@@ -110,7 +110,7 @@ class BaseClass(object):
 
         while class_ != BaseClass:
             if hasattr(class_, '_params'):
-                params.extend(class_._params.items())
+                params.extend(list(class_._params.items()))
 
             class_ = class_.__base__
 
@@ -227,7 +227,7 @@ class File(BaseClass):
         buffers = []
 
         for buffer_ in self.buffers:
-            if ('bufferLabel' in buffer_.attrs.keys() and
+            if ('bufferLabel' in list(buffer_.attrs.keys()) and
                     buffer_.attrs['bufferLabel'] == label):
                 buffers.append(buffer_)
 
@@ -293,7 +293,7 @@ class FileCollection(BaseClass):
                 msg = 'The value of >>len(files)<<, {!r}, must be > 0.'
                 raise ValueError(msg.format(len(files)))
 
-            attrs = [{name: value for name, value in file_.attrs.items()
+            attrs = [{name: value for name, value in list(file_.attrs.items())
                       if name in self._params} for file_ in files]
 
             for i in range(1, len(files)):

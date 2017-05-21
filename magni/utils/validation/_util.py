@@ -28,7 +28,7 @@ validate_once(func)
 
 """
 
-from __future__ import division
+
 
 import functools
 import inspect

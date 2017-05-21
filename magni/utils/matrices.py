@@ -33,7 +33,7 @@ magni.imaging._mtx1D : 1D transforms matrices for use 2D separable transforms.
 
 """
 
-from __future__ import division
+
 import copy
 
 import numpy as np

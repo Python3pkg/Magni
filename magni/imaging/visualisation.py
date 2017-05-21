@@ -29,7 +29,7 @@ stretch_image(img, max_val, min_val=0)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 import matplotlib as mpl
@@ -533,12 +533,12 @@ def _handle_ticklabels(ax, k, x_ticklabels, y_ticklabels):
 
     if x_ticklabels is not None:
         if isinstance(x_ticklabels[0], (list, tuple)):
-            x_t = range(len(x_ticklabels[k]))
+            x_t = list(range(len(x_ticklabels[k])))
             x_tl = x_ticklabels[k]
         else:
             # Backwards compatibility
             # Allow for sharing a single set of x_ticklabels across all images.
-            x_t = range(len(x_ticklabels))
+            x_t = list(range(len(x_ticklabels)))
             x_tl = x_ticklabels
 
         # Set xticks and xticklabels
@@ -547,12 +547,12 @@ def _handle_ticklabels(ax, k, x_ticklabels, y_ticklabels):
 
     if y_ticklabels is not None:
         if isinstance(y_ticklabels[0], (list, tuple)):
-            y_t = range(len(y_ticklabels[k]))
+            y_t = list(range(len(y_ticklabels[k])))
             y_tl = y_ticklabels[k]
         else:
             # Backwards compatibility
             # Allow for sharing a single set of y_ticklabels across all images.
-            y_t = range(len(y_ticklabels))
+            y_t = list(range(len(y_ticklabels)))
             y_tl = y_ticklabels
 
         # Set yticks and yticklabels

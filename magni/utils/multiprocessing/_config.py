@@ -42,7 +42,7 @@ function for more details about the `prefer_futures` and
 
 """
 
-from __future__ import division
+
 
 from magni.utils.config import Configger as _Configger
 from magni.utils.validation import validate_numeric as _numeric

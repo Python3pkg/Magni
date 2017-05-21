@@ -22,7 +22,7 @@ TestUtils(unittest.TestCase)
 
 """
 
-from __future__ import division
+
 from contextlib import contextmanager
 import os
 import platform
@@ -413,8 +413,8 @@ class TestProcessingProcess(unittest.TestCase):
             try:
                 from concurrent.futures.process import BrokenProcessPool
                 for iteration in range(10):
-                    print('Now processing iteration: {}'.format(iteration))
-                    tasks = list(zip(range(num_workers),
+                    print(('Now processing iteration: {}'.format(iteration)))
+                    tasks = list(zip(list(range(num_workers)),
                                      num_workers * [iteration]))
                     result = magni.utils.multiprocessing.process(
                         self.work_25906, args_list=tasks, maxtasks=1)
@@ -502,7 +502,7 @@ def _work_25906(worker_num, iteration):
             'join_crash_test.hdf', mode='a') as h5_file:
         h5_file.create_array('/', 'a{}_{}'.format(worker_num, iteration),
                              obj=(worker_num, iteration))
-    print('Worker {} finished writing to HDF table at iteration {}'.format(
-        worker_num, iteration))
+    print(('Worker {} finished writing to HDF table at iteration {}'.format(
+        worker_num, iteration)))
 
     return (worker_num, iteration)

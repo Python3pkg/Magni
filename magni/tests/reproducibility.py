@@ -15,7 +15,7 @@ Each chase is a string. It is tested that this string has certain properties.
 
 """
 
-from __future__ import division
+
 import inspect
 import json
 import os

@@ -9,7 +9,7 @@ subpackage.
 
 """
 
-from __future__ import division
+
 import multiprocessing as mp
 
 import tables

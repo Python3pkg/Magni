@@ -63,7 +63,7 @@ system_matrix : {'USE', 'RandomDCT2D', 'custom'}
 
 """
 
-from __future__ import division
+
 from types import FunctionType as _FunctionType
 try:
     from collections import Callable as _Callable  # Python 2

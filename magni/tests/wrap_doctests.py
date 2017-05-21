@@ -8,13 +8,13 @@ Module for wrapping the doctests embedded in the Magni source code docstrings.
 
 """
 
-from __future__ import division
+
 import contextlib
 import doctest
 import os
 import unittest
 try:
-    from StringIO import StringIO  # Python 2 byte str (Python 2 only)
+    from io import StringIO  # Python 2 byte str (Python 2 only)
 except ImportError:
     from io import StringIO  # Python 3 unicode str (both Py2 and Py3)
 

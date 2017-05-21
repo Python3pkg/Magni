@@ -44,7 +44,7 @@ References
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 
@@ -196,7 +196,7 @@ def run(y, A):
     validate_input()
 
     # Configured setup
-    param = dict(_conf.items())
+    param = dict(list(_conf.items()))
     convert = param['precision_float']
     iterations = param['iterations']
     report_history = param['report_history']

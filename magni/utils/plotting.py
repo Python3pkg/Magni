@@ -40,7 +40,7 @@ Get the normalised 'Blue' colour brew from the psp colour map:
 
 """
 
-from __future__ import division
+
 import warnings
 
 import numpy as np
@@ -229,13 +229,13 @@ def setup_matplotlib(settings={}, cmap=None):
 
     global _settings, _cmap
 
-    for name, setting in settings.items():
+    for name, setting in list(settings.items()):
         if name in _settings:
             _settings[name].update(setting)
         else:
             _settings[name] = setting
 
-    for name, setting in _settings.items():
+    for name, setting in list(_settings.items()):
         try:
             mpl.rc(name, **setting)
         except (AttributeError, KeyError):

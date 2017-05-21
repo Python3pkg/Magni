@@ -24,7 +24,7 @@ Additional arguments are passed on to the nose test runner.
 
 """
 
-from __future__ import division, print_function
+
 import argparse
 import nose
 import os

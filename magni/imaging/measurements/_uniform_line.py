@@ -16,7 +16,7 @@ uniform_line_sample_surface(l, w, speed, sample_rate, time)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

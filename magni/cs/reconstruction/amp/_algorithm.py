@@ -35,7 +35,7 @@ References
 
 """
 
-from __future__ import division
+
 import copy
 
 import numpy as np
@@ -294,7 +294,7 @@ def _get_amp_initialisation(y, A):
     """
 
     init = dict()
-    param = dict(_conf.items())
+    param = dict(list(_conf.items()))
 
     # Configured setup
     init['convert'] = param['precision_float']

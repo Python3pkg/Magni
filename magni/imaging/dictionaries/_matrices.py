@@ -21,7 +21,7 @@ magni.utils.matrices : Matrix emulators.
 """
 
 
-from __future__ import division
+
 
 from pkg_resources import parse_version as _parse_version
 from scipy import __version__ as _scipy_version

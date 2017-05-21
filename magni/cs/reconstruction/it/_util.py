@@ -16,7 +16,7 @@ def _get_operators(module)
 
 """
 
-from __future__ import division
+
 
 from magni.cs.reconstruction.it import _stop_criterion
 from magni.cs.reconstruction.it import _step_size
@@ -45,7 +45,7 @@ def _get_methods(module):
 
     """
 
-    method_candidates = eval('_' + module).__dict__.keys()
+    method_candidates = list(eval('_' + module).__dict__.keys())
     methods = [candidate[21:] for candidate in method_candidates
                if candidate[:21] == 'wrap_calculate_using_']
 
@@ -73,7 +73,7 @@ def _get_operators(module):
 
     """
 
-    operator_candidates = eval('_' + module).__dict__.keys()
+    operator_candidates = list(eval('_' + module).__dict__.keys())
     operators = [candidate[10:] for candidate in operator_candidates
                  if candidate[:10] == 'threshold_']
 

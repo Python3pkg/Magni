@@ -13,7 +13,7 @@ validate_levels(name, levels)
 
 """
 
-from __future__ import division
+
 
 from magni.utils.validation import validate_generic as _generic
 from magni.utils.validation import validate_numeric as _numeric
@@ -132,5 +132,5 @@ def _validate_level(name, var, levels, index=0):
             for i, value in enumerate(var):
                 _validate_level(name + [i], value, levels, index + 1)
         elif isinstance(var, dict):
-            for key, value in var.items():
+            for key, value in list(var.items()):
                 _validate_level(name + [key], value, levels, index + 1)

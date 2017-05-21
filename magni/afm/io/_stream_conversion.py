@@ -16,7 +16,7 @@ convert_stream(stream)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 
@@ -110,14 +110,14 @@ def _convert_image_data(buffer_, data_type):
         data = np.frombuffer(buffer_, np.int32)
         data = np.float64(data) / 2**31
     elif data_type.lower() == 'ascii':
-        data = map(int, buffer_.strip().split())
+        data = list(map(int, buffer_.strip().split()))
         data = np.float64(data) / 2**15
     elif data_type.lower() == 'ascii_absolute':
-        data = map(float, buffer_.strip().split())
+        data = list(map(float, buffer_.strip().split()))
         data = np.float64(data)
     elif data_type.lower() == 'ascii_multicolumn':
         data = buffer_.strip().split()
-        data = [map(float, row.split()) for row in data]
+        data = [list(map(float, row.split())) for row in data]
         data = np.float64(data).flatten('F')
     else:
         raise IOError('Unknown data type {!r}.'.format(data_type))
@@ -198,7 +198,7 @@ def _convert_spectroscopy_data(buffer_, data_type):
         data = np.float64(data)
     elif data_type.lower() == 'ascii_multicolumn':
         data = buffer_.strip().split()[1:]
-        data = [map(float, row.split()[2:]) for row in data]
+        data = [list(map(float, row.split()[2:])) for row in data]
         data = np.float64(data).flatten('F')
     else:
         raise IOError('Unknown data type {!r}.'.format(data_type))

@@ -130,9 +130,9 @@ def run(y, A):
         'will be removed in a future version. Use the more general ' +
         '`magni.cs.reconstruction.it` instead.', DeprecationWarning)
 
-    current_it_config = dict(_it.config.items())
+    current_it_config = dict(list(_it.config.items()))
 
-    iht_config = dict(config.items())
+    iht_config = dict(list(config.items()))
     k = int(iht_config['threshold_fixed'] * A.shape[0])
     iht_config['threshold_fixed'] = k
     if iht_config['threshold'] == 'oracle':

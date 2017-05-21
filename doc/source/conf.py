@@ -64,8 +64,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Magni'
-copyright = u'2014-2017, Magni developers'
+project = 'Magni'
+copyright = '2014-2017, Magni developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

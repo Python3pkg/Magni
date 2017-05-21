@@ -18,7 +18,7 @@ plot_phase_transition_computation_times(time, delta, rho, output_path=None)
 
 """
 
-from __future__ import division
+
 from itertools import cycle
 
 import numpy as np
@@ -165,8 +165,8 @@ def plot_phase_transitions(curves, plot_l1=True, output_path=None,
     _plot_extra_curves(axes, plot_l1, reference_curves)
 
     handles, labels = axes.get_legend_handles_labels()
-    handles, labels = zip(*sorted(zip(handles, labels),
-                                  key=lambda t: t[1].lower()))
+    handles, labels = list(zip(*sorted(zip(handles, labels),
+                                  key=lambda t: t[1].lower())))
     leg = axes.legend(handles, labels, loc=legend_loc)
     leg.get_frame().set_facecolor('1.0')
     axes.set_xlim([0, 1])

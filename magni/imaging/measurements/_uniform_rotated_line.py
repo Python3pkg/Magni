@@ -18,7 +18,7 @@ uniform_rotated_line_sample_surface(l, w, speed, sample_rate, time, angle=0.,
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

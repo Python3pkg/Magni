@@ -63,7 +63,7 @@ sigma_stop_fixed : float
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

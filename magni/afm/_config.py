@@ -21,7 +21,7 @@ algorithm : {'amp', 'gamp', 'it', 'iht', 'sl0'}
 
 """
 
-from __future__ import division
+
 
 from magni.utils.config import Configger as _Configger
 from magni.utils.validation import validate_generic as _generic

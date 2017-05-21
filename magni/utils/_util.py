@@ -8,7 +8,7 @@ Module providing the public function of the magni.utils subpackage.
 
 """
 
-from __future__ import division
+
 
 import os
 

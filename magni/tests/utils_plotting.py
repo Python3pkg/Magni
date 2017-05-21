@@ -15,7 +15,7 @@ class TestMatplotlibConfiguration(unittest.TestCase)
 
 """
 
-from __future__ import division
+
 import copy
 import unittest
 import warnings
@@ -63,8 +63,8 @@ class TestMatplotlibConfiguration(unittest.TestCase):
             settings=self.settings_defaults, cmap=self.cmap_default)
         magni.utils.plotting._settings = self.settings_defaults
         magni.utils.plotting._cmap = self.cmap_default
-        for name1, settings in self.settings_defaults.items():
-            for name2, setting in settings.items():
+        for name1, settings in list(self.settings_defaults.items()):
+            for name2, setting in list(settings.items()):
                 self.assertEqual(
                     self._normalise_rcParam(
                         mpl.rcParams['.'.join([name1, name2])]),
@@ -73,8 +73,8 @@ class TestMatplotlibConfiguration(unittest.TestCase):
 
     def test_default_settings(self):
         magni.utils.plotting.setup_matplotlib()
-        for name1, settings in self.settings_defaults.items():
-            for name2, setting in settings.items():
+        for name1, settings in list(self.settings_defaults.items()):
+            for name2, setting in list(settings.items()):
                 self.assertEqual(
                     self._normalise_rcParam(
                         mpl.rcParams['.'.join([name1, name2])]),

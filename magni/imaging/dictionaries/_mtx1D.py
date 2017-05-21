@@ -15,7 +15,7 @@ get_DFT_transform_matrix(N)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 import scipy.linalg
@@ -91,7 +91,7 @@ def get_DCT_transform_matrix(N):
 
     validate_input()
 
-    nn, rr = np.meshgrid(*map(np.arange, (N, N)))
+    nn, rr = np.meshgrid(*list(map(np.arange, (N, N))))
 
     D = np.cos((2 * nn + 1) * rr * np.pi / (2 * N))
     D[0, :] /= np.sqrt(N)

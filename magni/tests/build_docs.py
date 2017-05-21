@@ -8,7 +8,7 @@ Module for testing the Magni documentation build process.
 
 """
 
-from __future__ import division, print_function
+
 import os
 import subprocess
 import unittest

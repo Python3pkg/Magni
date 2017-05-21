@@ -8,7 +8,7 @@ Module providing unittests for `magni.utils.validation`.
 
 """
 
-from __future__ import division
+
 import unittest
 
 import numpy as np
@@ -35,7 +35,7 @@ class AbstractTest(object):
                 if e.args[0][:24] == 'Invalid validation call:':
                     behaves_correctly = True
                 else:
-                    print('\nException caught:\n    {}'.format(e.args[0]))
+                    print(('\nException caught:\n    {}'.format(e.args[0])))
 
             if not behaves_correctly:
                 kwarg = list(kwarg.keys()) + list(kwarg.values())
@@ -101,7 +101,7 @@ class AbstractTest(object):
             try:
                 example(value)
             except Exception as e:
-                print('\nException caught:\n    {}'.format(e.args[0]))
+                print(('\nException caught:\n    {}'.format(e.args[0])))
                 self.fail('{!r} should not fail here.'
                           .format(self._validate.__name__))
 
@@ -198,7 +198,7 @@ class TestCommon(unittest.TestCase):
         try:
             example_ignore(None)
         except ValueError as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should be able to ignore {!r}.'
                       .format(validate.__name__, None))
 
@@ -213,7 +213,7 @@ class TestCommon(unittest.TestCase):
         try:
             example(var)
         except NameError as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should use passed function arguments.'
                       .format(decorate_validation.__name__))
 
@@ -244,7 +244,7 @@ class TestCommon(unittest.TestCase):
         try:
             example(var, [var], {'key': var})
         except (NameError, LookupError) as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should be able to locate the argument.'
                       .format(validate.__name__))
 
@@ -660,7 +660,7 @@ class TestUtils(unittest.TestCase):
             disable_validation()
             example(var)
         except TypeError as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should disable validation.'
                       .format(disable_validation.__name__))
         finally:
@@ -683,7 +683,7 @@ class TestUtils(unittest.TestCase):
         try:
             example_with_decoration(var)
         except RuntimeError as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should enable validation.'
                       .format(decorate_validation.__name__))
 
@@ -718,7 +718,7 @@ class TestUtils(unittest.TestCase):
             example(vars_[0])
             example(vars_[1])
         except TypeError as e:
-            print('\nException caught:\n    {}'.format(e.args[0]))
+            print(('\nException caught:\n    {}'.format(e.args[0])))
             self.fail('{!r} should enable validation once.'
                       .format(enable_validate_once.__name__))
         finally:

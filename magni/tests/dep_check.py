@@ -13,7 +13,7 @@ https://www.python.org/dev/peps/pep-0440/
 
 """
 
-from __future__ import division
+
 from pkg_resources import parse_version
 import importlib
 from itertools import chain
@@ -100,7 +100,7 @@ else:
 
 
 # Third party dependencies
-all_deps = dict(chain(deps.items(), opt_deps.items()))
+all_deps = dict(chain(list(deps.items()), list(opt_deps.items())))
 for pac in all_deps:
     try:
         p = importlib.import_module(pac)
@@ -124,7 +124,7 @@ for pac in all_deps:
 
 
 # Version broken optional dependencies:
-for brok, brok_ver in ver_broken_opt_deps.items():
+for brok, brok_ver in list(ver_broken_opt_deps.items()):
     try:
         b = importlib.import_module(brok)
         if parse_version(b.__version__) < parse_version(brok_ver):
@@ -153,7 +153,7 @@ def _print_dep_report(dep, status):
 
     """
 
-    print ('{0:>14}  :  {1:<15}'.format(pac_names[dep], status[dep]))
+    print(('{0:>14}  :  {1:<15}'.format(pac_names[dep], status[dep])))
 
 
 # Print the full dependency report
@@ -177,6 +177,6 @@ for opt in sorted(ver_broken_opt_deps):
     _print_dep_report(opt, status)
 
 # Exit 1 in case of failures
-for val in status.values():
+for val in list(status.values()):
     if 'FAIL' in val:
         sys.exit(1)

@@ -17,7 +17,7 @@ magni.utils.multiprocessing.config : Configuration options.
 
 """
 
-from __future__ import division
+
 import multiprocessing as mp
 import os
 import traceback
@@ -472,7 +472,7 @@ def _process_worker(fak_tuple):
         except KeyboardInterrupt:
             _process_worker.__globals__['interrupted'] = True
         except BaseException as e:
-            print(traceback.format_exc())
+            print((traceback.format_exc()))
 
             if _config['silence_exceptions']:
                 return e

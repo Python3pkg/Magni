@@ -14,7 +14,7 @@ construct_measurement_matrix(coords, h, w)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

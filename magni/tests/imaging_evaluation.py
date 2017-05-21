@@ -18,7 +18,7 @@ For all three cases flat, 1D, and 2D arrays are tested.
 
 """
 
-from __future__ import division
+
 import unittest
 
 import numpy as np

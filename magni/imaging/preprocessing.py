@@ -13,7 +13,7 @@ detilt(img, mask=None, mode='plane_flatten', degree=1, return_tilt=False)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

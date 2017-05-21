@@ -68,7 +68,7 @@ def print_table(columns, headers=None, bars='|'):
 
     if headers is not None:
         hr_index = 0
-        columns = list(zip(headers, *zip(*columns)))
+        columns = list(zip(headers, *list(zip(*columns))))
     else:
         hr_index = -1
 
@@ -91,7 +91,7 @@ def print_table(columns, headers=None, bars='|'):
     print('\n')
     print(hr)
 
-    for i, row in enumerate(zip(*columns)):
+    for i, row in enumerate(list(zip(*columns))):
         line = '   '
 
         for field, width, sep in zip(row, widths, seps):

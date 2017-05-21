@@ -22,7 +22,7 @@ magni.afm.io : .mi file loading.
 
 """
 
-from __future__ import division
+
 from collections import OrderedDict as _OrderedDict
 import types
 

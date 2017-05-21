@@ -12,7 +12,7 @@ This assumes comparison of IPython Notebooks in nbformat.v3
 
 """
 
-from __future__ import division, print_function
+
 import base64
 from datetime import datetime
 import os
@@ -24,11 +24,11 @@ import unittest
 import types
 import warnings
 try:
-    from Queue import Empty  # Python 2
+    from queue import Empty  # Python 2
 except ImportError:
     from queue import Empty  # Python 3
 try:
-    from StringIO import StringIO as BytesIO  # Python 2
+    from io import StringIO as BytesIO  # Python 2
 except ImportError:
     from io import BytesIO  # Python 3
 
@@ -248,19 +248,19 @@ def _check_ipynb(notebook):
                         str_test_results = [
                             '(for out {})\n'.format(k) + '\n'.join(
                                 [' : '.join([str(key), str(val)])
-                                 for key, val in t.items()
+                                 for key, val in list(t.items())
                                  if key not in ('metadata', 'png')]
                             ) for k, t in enumerate(test_results)]
                         str_cell_outputs = [
                             '(for out {})\n'.format(k) + '\n'.join(
                                 [' : '.join([str(key), str(val)])
-                                 for key, val in t.items()
+                                 for key, val in list(t.items())
                                  if key not in ('metadata', 'png')]
                             ) for k, t in enumerate(cell.outputs)]
                     except TypeError as e:
                         report += 'TypeError in ipynb_examples test\n\n'
                         for entry in cell.outputs:
-                            if 'traceback' in entry.keys():
+                            if 'traceback' in list(entry.keys()):
                                 for item in entry['traceback']:
                                     report += str(item) + '\n'
                     else:
@@ -541,7 +541,7 @@ def _execute_cell(cell, shell, iopub, timeout=300):
                 continue
         elif msg_type in ('display_data', 'pyout'):
             node['metadata'] = content['metadata']
-            for mime, data in content['data'].items():
+            for mime, data in list(content['data'].items()):
                 attr = mime.split('/')[-1].lower()
                 attr = attr.replace('+xml', '').replace('plain', 'text')
                 setattr(node, attr, data)

@@ -15,7 +15,7 @@ reconstruct(y, Phi, Psi)
 
 """
 
-from __future__ import division
+
 
 from magni.afm import config as _conf
 from magni.cs.reconstruction import amp as _amp

@@ -42,7 +42,7 @@ magni.reproducibility._chase.get_stack_trace : Magni stack trace chase
 
 """
 
-from __future__ import division
+
 import json
 import os
 
@@ -505,7 +505,7 @@ def _recursive_annotation_read(h5_annotations, out_annotations_dict):
 
     # Read leaves
     try:
-        for annotation_name, annotation_value in leaves.items():
+        for annotation_name, annotation_value in list(leaves.items()):
             out_annotations_dict[annotation_name] = json.loads(
                 annotation_value.read().decode())
     except ValueError as e:

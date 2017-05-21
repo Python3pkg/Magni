@@ -13,7 +13,7 @@ MultiDomainImage(object)
 
 """
 
-from __future__ import division
+
 
 from magni.utils.matrices import Matrix as _Matrix
 from magni.utils.matrices import MatrixCollection as _MatrixC

@@ -14,8 +14,8 @@ validate_generic(name, type, value_in=None, len_=None, keys_in=None,
 
 """
 
-from __future__ import absolute_import
-from __future__ import division
+
+
 
 import types
 
@@ -24,11 +24,11 @@ from magni.utils.validation._util import report as _report
 
 
 try:
-    unicode = unicode
+    str = str
 except NameError:
     _string = (str, bytes)
 else:
-    _string = (str, unicode)
+    _string = (str, str)
 
 _types = {'string': _string,
           'explicit collection': (list, tuple),
@@ -205,7 +205,7 @@ def _check_keys(name, var, keys_in, has_keys):
                     var_name='keys_in', var_value=keys_in,
                     prepend='Invalid validation call: ')
 
-        for key in var.keys():
+        for key in list(var.keys()):
             if key not in keys_in:
                 _report(KeyError, 'must be in {!r}.', keys_in, var_name=name,
                         expr='{}.keys()')
@@ -217,7 +217,7 @@ def _check_keys(name, var, keys_in, has_keys):
                     prepend='Invalid validation call: ')
 
         for key in has_keys:
-            if key not in var.keys():
+            if key not in list(var.keys()):
                 _report(KeyError, 'must have the key {!r}.', key,
                         var_name=name)
 
@@ -270,7 +270,7 @@ def _check_type(name, var, types_):
             if isinstance(var, type_):
                 valid = True
                 break
-        elif type_ in _types.keys():
+        elif type_ in list(_types.keys()):
             if isinstance(var, _types[type_]):
                 valid = True
                 break

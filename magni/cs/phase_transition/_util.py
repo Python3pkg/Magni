@@ -9,7 +9,7 @@ subpackage.
 
 """
 
-from __future__ import division
+
 import os
 import re
 import types
@@ -20,6 +20,7 @@ from magni.utils.multiprocessing import File as _File
 from magni.utils.validation import decorate_validation as _decorate_validation
 from magni.utils.validation import validate_generic as _generic
 from magni.utils.validation import validate_numeric as _numeric
+import collections
 
 
 def determine(algorithm, path, label='default', overwrite=False,
@@ -87,7 +88,7 @@ def determine(algorithm, path, label='default', overwrite=False,
 
         _numeric('overwrite', 'boolean')
         if (pre_simulation_hook is not None and
-                not callable(pre_simulation_hook)):
+                not isinstance(pre_simulation_hook, collections.Callable)):
             raise RuntimeError('The >>pre_simulation_hook<< must be callable')
 
     validate_input()

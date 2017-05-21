@@ -18,7 +18,7 @@ access to any configuration options unlike the other config modules of `magni`.
 
 """
 
-from __future__ import division
+
 from itertools import chain
 
 from magni.utils.validation import decorate_validation as _decorate_validation
@@ -116,7 +116,7 @@ class Configger(object):
                 _generic(None, 'mapping', has_keys=tuple(params.keys())),
                 _generic(None, 'explicit collection')))
 
-            for key in valids.keys():
+            for key in list(valids.keys()):
                 _generic(('valids', key, 0), 'string',
                          value_in=tuple(self._funcs.keys()))
 
@@ -207,7 +207,7 @@ class Configger(object):
                                  "'values' instead.")
 
         if key is None:
-            return dict(self.items())
+            return dict(list(self.items()))
         else:
             return self[key]
 
@@ -222,7 +222,7 @@ class Configger(object):
 
         """
 
-        for key in self.keys():
+        for key in list(self.keys()):
             yield (key, self[key])
 
     def keys(self):
@@ -236,7 +236,7 @@ class Configger(object):
 
         """
 
-        return self._params.keys()
+        return list(self._params.keys())
 
     def reset(self):
         """
@@ -284,18 +284,18 @@ class Configger(object):
             _generic('params', 'mapping', keys_in=tuple(self._params.keys()))
 
             for name, var in (('params', params), ('kwargs', kwargs)):
-                for key in var.keys():
+                for key in list(var.keys()):
                     validation = self._valids[key]
                     self._funcs[validation[0]]((name, key), *validation[1:])
 
         validate_input()
 
         if params is not None:
-            for key, value in params.items():
+            for key, value in list(params.items()):
                 self[key] = value
 
         if len(kwargs) > 0:
-            for key, value in kwargs.items():
+            for key, value in list(kwargs.items()):
                 self[key] = value
 
     def values(self):
@@ -309,5 +309,5 @@ class Configger(object):
 
         """
 
-        for key in self.keys():
+        for key in list(self.keys()):
             yield self[key]

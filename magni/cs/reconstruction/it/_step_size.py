@@ -18,7 +18,7 @@ get_function_handle(method)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

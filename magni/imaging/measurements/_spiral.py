@@ -16,7 +16,7 @@ spiral_sample_surface(l, w, speed, sample_rate, time, rect_area=False)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

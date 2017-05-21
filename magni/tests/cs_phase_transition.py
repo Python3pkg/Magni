@@ -27,7 +27,7 @@ TestSimulationSimulate(unittest.TestCase)
 
 """
 
-from __future__ import division
+
 from contextlib import contextmanager
 import os
 import shutil
@@ -471,7 +471,7 @@ class TestDataGenerateNoise(unittest.TestCase):
                 estimated_SNR = 10 * np.log10(estimated_signal_power /
                                               estimated_noise_power)
 
-                print(estimated_SNR, SNR)
+                print((estimated_SNR, SNR))
 
                 self.assertTrue(np.allclose(estimated_SNR, SNR, atol=1e-1))
                 self.assertEqual(magni.cs.phase_transition.config['SNR'], SNR)

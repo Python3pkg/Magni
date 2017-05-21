@@ -18,7 +18,7 @@ lissajous_sample_surface(l, w, speed, sample_rate, time, f_y=1., f_x=1.,
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

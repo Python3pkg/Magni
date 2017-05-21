@@ -19,14 +19,14 @@ get_stack_trace()
 
 """
 
-from __future__ import absolute_import  # stdlib io is shadowed by . io
-from __future__ import division
+  # stdlib io is shadowed by . io
+
 import contextlib
 import inspect
 import traceback
 
 try:
-    from StringIO import StringIO  # Python 2 byte str (Python 2 only)
+    from io import StringIO  # Python 2 byte str (Python 2 only)
 except ImportError:
     from io import StringIO  # Python 3 unicode str (both Py2 and Py3)
 

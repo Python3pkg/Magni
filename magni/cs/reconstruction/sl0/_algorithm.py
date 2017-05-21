@@ -41,7 +41,7 @@ References
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 import scipy.linalg
@@ -157,7 +157,7 @@ def run(y, A):
     if not isinstance(A, np.ndarray):
         A = A.A
 
-    param = dict(_conf.items())
+    param = dict(list(_conf.items()))
     convert = param['precision_float']
     epsilon = param['epsilon']
     sigma_geometric = param['sigma_geometric']

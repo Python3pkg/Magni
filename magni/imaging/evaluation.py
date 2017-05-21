@@ -17,7 +17,7 @@ calculate_retained_energy(x_org, x_recons)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

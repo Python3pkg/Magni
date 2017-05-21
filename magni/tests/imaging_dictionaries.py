@@ -21,7 +21,7 @@ These cases are tested with 2D transforms.
 
 """
 
-from __future__ import division
+
 import unittest
 
 import numpy as np

@@ -16,7 +16,7 @@ zigzag_sample_surface(l, w, speed, sample_rate, time, angle=np.pi / 20)
 
 """
 
-from __future__ import division
+
 
 import numpy as np
 

@@ -17,7 +17,7 @@ RelativeEnergyTest(unittest.TestCase)
 
 """
 
-from __future__ import division
+
 import unittest
 
 import numpy as np
@@ -34,7 +34,7 @@ class CoherenceTest(unittest.TestCase):
     def setUp(self):
         np.random.seed(1512)
 
-        self._Phi, self._Psi = _generate_test_problem(5, 10, range(0, 10, 2))
+        self._Phi, self._Psi = _generate_test_problem(5, 10, list(range(0, 10, 2)))
         self._M = self._Phi.dot(self._Psi)
 
         for i in range(10):
@@ -106,7 +106,7 @@ class MutualCoherenceTest(unittest.TestCase):
     def setUp(self):
         np.random.seed(1514)
 
-        self._Phi, self._Psi = _generate_test_problem(5, 10, range(0, 10, 2))
+        self._Phi, self._Psi = _generate_test_problem(5, 10, list(range(0, 10, 2)))
         self._M = self._Phi.dot(self._Psi)
         self._func = magni.cs.indicators.calculate_mutual_coherence
 
@@ -173,7 +173,7 @@ class RelativeEnergyTest(unittest.TestCase):
     def setUp(self):
         np.random.seed(1510)
 
-        self._Phi, self._Psi = _generate_test_problem(5, 10, range(0, 10, 2))
+        self._Phi, self._Psi = _generate_test_problem(5, 10, list(range(0, 10, 2)))
         self._M = self._Phi.dot(self._Psi)
         self._func = magni.cs.indicators.calculate_relative_energy
 

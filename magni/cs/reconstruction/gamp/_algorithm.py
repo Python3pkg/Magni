@@ -50,7 +50,7 @@ References
 
 """
 
-from __future__ import division
+
 import copy
 
 import numpy as np
@@ -434,7 +434,7 @@ def _clean_vars(vars_dict):
     """
 
     cleaned_vars = dict()
-    for key, val in vars_dict.items():
+    for key, val in list(vars_dict.items()):
         if not key.startswith('_'):
             if isinstance(val, _Configger):
                 cleaned_vars[key] = dict(val)
@@ -468,7 +468,7 @@ def _get_gamp_initialisation(y, A, A_asq):
     """
 
     init = dict()
-    param = dict(_conf.items())
+    param = dict(list(_conf.items()))
 
     # Configured setup
     init['convert'] = param['precision_float']
@@ -546,9 +546,9 @@ def _get_gamp_initialisation(y, A, A_asq):
     if param['report_A_asq_setup']:
         np_printoptions = np.get_printoptions()
         np.set_printoptions(precision=3, threshold=5, edgeitems=1)
-        print('GAMP is using the A_asq: {}'.format(init['A_asq']))
-        print('The sum approximation method is: {}'.format(
-            init['sum_approximation_method']))
+        print(('GAMP is using the A_asq: {}'.format(init['A_asq'])))
+        print(('The sum approximation method is: {}'.format(
+            init['sum_approximation_method'])))
         np.set_printoptions(**np_printoptions)
 
     return init
